@@ -7,14 +7,15 @@ import './common/style/style.dart' show AppColors;
 import 'package:fluro/fluro.dart';
 import './routers/routers.dart';
 import './routers/application.dart';
-void main() { 
+
+void main() {
   var providers = Providers();
   var currentIndexProvide = CurrentIndexProvide();
   var websocketProvide = WebSocketProvide();
   providers
-  ..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide))
-  ..provide(Provider<WebSocketProvide>.value(websocketProvide));
-  runApp(ProviderNode(child:MyApp(),providers: providers));
+    ..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide))
+    ..provide(Provider<WebSocketProvide>.value(websocketProvide));
+  runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,18 +25,16 @@ class MyApp extends StatelessWidget {
     final router = Router();
     Routers.configureRouters(router);
     Application.router = router;
-    Provide.value<WebSocketProvide>(context).init();
+    Provide.value<WebSocketProvide>(context).init(); //!初始化
     return Container(
-      child:MaterialApp(
-        title: '微信',
-        theme: ThemeData.light().copyWith(
-          primaryColor: Color(AppColors.PrimaryColor),
-          cardColor: Color(AppColors.CardBgColor),
-          backgroundColor: Color(AppColors.BackgroundColor),
-        ),  
-        home: IndexPage(),
-      )
-    );
+        child: MaterialApp(
+      title: 'HM',
+      theme: ThemeData.light().copyWith(
+        primaryColor: Color(AppColors.PrimaryColor),
+        cardColor: Color(AppColors.CardBgColor),
+        backgroundColor: Color(AppColors.BackgroundColor),
+      ),
+      home: IndexPage(),
+    ));
   }
 }
-
