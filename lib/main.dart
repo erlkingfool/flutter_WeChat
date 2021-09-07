@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final router = Router();
+    final router = FluroRouter();
     Routers.configureRouters(router);
     Application.router = router;
     Provide.value<WebSocketProvide>(context).init(); //!初始化
