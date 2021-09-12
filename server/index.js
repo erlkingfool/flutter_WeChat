@@ -50,7 +50,7 @@ var server = ws.createServer(function(conn){
           return item.uid === obj.uid
         })
         if(!isuser){
-          users.push({
+          users.push({//!用户列表
             nickname: obj.nickname,
             uid: obj.uid
           });
