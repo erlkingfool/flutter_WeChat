@@ -42,7 +42,7 @@ class WebSocketProvide with ChangeNotifier {
 
   createWebsocket() async {
     //创建连接并且发送鉴别身份信息
-    channel = await new IOWebSocketChannel.connect('ws://111.231.225.178:3001');
+    channel = await new IOWebSocketChannel.connect('ws://localhost:3001'); //!
     var obj = {
       "uid": uid,
       "type": 1,
@@ -173,3 +173,7 @@ class WebSocketProvide with ChangeNotifier {
     notifyListeners();
   }
 }
+
+
+//NOTE 先安装nodejs-websocket: npm install nodejs-websocket
+//运行:node index.js

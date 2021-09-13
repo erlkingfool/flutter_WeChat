@@ -12,7 +12,7 @@ let groups = [
 		"users": []
 	}
 ];
-
+//广播
 function boardcast(obj) {
   if(obj.bridge && obj.bridge.length){
     obj.bridge.forEach(item=>{
@@ -111,7 +111,7 @@ var server = ws.createServer(function(conn){
           bridge: obj.bridge
         });
         break;
-      // 发送消息
+      // 发送消息,type2
       default:
         boardcast({
           type: 2,
