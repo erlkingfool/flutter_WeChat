@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CurrentIndexProvide with ChangeNotifier{
+//当前页面index,provider要用,在index_page.dart中
+class CurrentIndexProvide with ChangeNotifier {
   int currentIndex = 0;
 
-  changeIndex(int newIndex){
+  changeIndex(int newIndex) {
     currentIndex = newIndex;
     notifyListeners();
   }

@@ -13,8 +13,8 @@ void main() {
   var currentIndexProvide = CurrentIndexProvide();
   var websocketProvide = WebSocketProvide();
   providers
-    ..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide))
-    ..provide(Provider<WebSocketProvide>.value(websocketProvide));
+    ..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide))//监控页面index
+    ..provide(Provider<WebSocketProvide>.value(websocketProvide));//监控websocket
   runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 
