@@ -14,6 +14,8 @@ let groups = [
 ];
 //广播
 function boardcast(obj) {
+  //REVIEW 将来改写为go,不需要用这个判断方法
+  //发送给个人
   if(obj.bridge && obj.bridge.length){
     obj.bridge.forEach(item=>{
       conns[item].sendText(JSON.stringify(obj));
@@ -23,6 +25,7 @@ function boardcast(obj) {
     })
     return;
   }
+  //发送到群
   if (obj.groupId) {
     group = groups.filter(item=>{
       return item.id === obj.groupId
@@ -121,7 +124,7 @@ var server = ws.createServer(function(conn){
           nickname: obj.nickname,
           bridge: obj.bridge,
           groupId: obj.groupId,
-          status: 1
+          status: 1//!新消息状态码
         });
         break;
     }
