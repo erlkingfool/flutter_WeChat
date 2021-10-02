@@ -25,7 +25,7 @@ function boardcast(obj) {
     })
     return;
   }
-  //发送到群
+  //发送到群每个成员
   if (obj.groupId) {
     group = groups.filter(item=>{
       return item.id === obj.groupId
@@ -47,13 +47,13 @@ var server = ws.createServer(function(conn){
     obj = JSON.parse(obj);
     conns[''+obj.uid+''] = conn;
     switch(obj.type){
-      // 创建连接
+      // 新加入
       case 1:
         let isuser = users.some(item=>{
           return item.uid === obj.uid
-        })
-        if(!isuser){
-          users.push({//!用户列表
+        })//是否存在
+        if(!isuser){//若没存在,添加...
+          users.push({//!添加到用户列表
             nickname: obj.nickname,
             uid: obj.uid
           });
@@ -62,6 +62,7 @@ var server = ws.createServer(function(conn){
             uid: obj.uid
           });
         }
+        //广播
         boardcast({
           type: 1,
           date: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -114,7 +115,7 @@ var server = ws.createServer(function(conn){
           bridge: obj.bridge
         });
         break;
-      // 发送消息,type2
+      // 发送消息,type=2
       default:
         boardcast({
           type: 2,
